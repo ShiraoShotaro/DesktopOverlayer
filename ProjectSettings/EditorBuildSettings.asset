@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/desktopOVR/DOVR.unity
+    guid: eabc7d616196c3c4698aa0ef2f3228ba

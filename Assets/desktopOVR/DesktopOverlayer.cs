@@ -56,6 +56,9 @@ public class DesktopOverlayer : MonoBehaviour
 	//取得元のRenderTexture
 	public RenderTexture renderTexture;
 
+	[Range(0.1f,10f)]
+	public float scale = 1.0f;
+
 	void Start()
 	{
 		var openVRError = EVRInitError.None;
@@ -129,9 +132,9 @@ public class DesktopOverlayer : MonoBehaviour
 			var wy = -0f;
 			var wz = -2f;
 
-			pose.m0 = 1; pose.m1 = 0; pose.m2 = 0; pose.m3 = wx;
-			pose.m4 = 0; pose.m5 = textureYflip; pose.m6 = 0; pose.m7 = wy;
-			pose.m8 = 0; pose.m9 = 0; pose.m10 = 1; pose.m11 = wz;
+			pose.m0 = scale; pose.m1 = 0; pose.m2 = 0; pose.m3 = wx;
+			pose.m4 = 0; pose.m5 = scale * textureYflip; pose.m6 = 0; pose.m7 = wy;
+			pose.m8 = 0; pose.m9 = 0; pose.m10 = scale; pose.m11 = wz;
 
 			//回転行列を元に、HMDからの相対的な位置にオーバーレイを表示する。
 			//代わりにSetOverlayTransformAbsoluteを使用すると、ルーム空間に固定することができる

@@ -565,11 +565,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: DesktopOverlayer2
   metroPackageVersion: 
-  metroCertificatePath: 
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 805873dd13b4d501
   metroApplicationDescription: DesktopOverlayer2
   wsaImages: {}
   metroTileShortName: 
