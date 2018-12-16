@@ -8,3 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/desktopOVR/DOVR.unity
     guid: eabc7d616196c3c4698aa0ef2f3228ba
+  - enabled: 1
+    path: Assets/UI.unity
+    guid: 44cfcb47c1ae90848a38e80fdb459311

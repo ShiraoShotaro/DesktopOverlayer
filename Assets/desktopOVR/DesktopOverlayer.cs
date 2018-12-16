@@ -21,6 +21,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Valve.VR; //Steam VR
 
 public class DesktopOverlayer : MonoBehaviour
@@ -30,10 +31,10 @@ public class DesktopOverlayer : MonoBehaviour
 
 	//グローバルキー(システムのオーバーレイ同士の識別名)。
 	//ユニークでなければならない。乱数やUUIDなどを勧める
-	const string OverlayKey = "[OverlaySample]";
+	const string OverlayKey = "DesktopOverlayer_v0.0.1";
 
 	//ユーザーが確認するためのオーバーレイの名前
-	const string OverlayFriendlyName = "OverlaySampleApplication";
+	const string OverlayFriendlyName = "DesktopOverlayer_v0.0.1";
 
 	//オーバーレイのハンドル(整数)
 	ulong overlayHandle = 0;
@@ -58,6 +59,29 @@ public class DesktopOverlayer : MonoBehaviour
 
 	[Range(0.1f,10f)]
 	public float scale = 1.0f;
+
+	[Range(-10f, 10f)]
+	public float posX;
+
+	[Range(-10f, 10f)]
+	public float posY;
+
+	[Range(-10f, 10f)]
+	public float posZ = -0.2f;
+
+
+	public Slider ScaleSlider;
+	public Slider PosXSlider;
+	public Slider PosYSlider;
+	public Slider PosZSlider;
+
+	public void ChangedSlidersValue()
+	{
+		scale = ScaleSlider.value;
+		posX = PosXSlider.value;
+		posY = PosYSlider.value;
+		posZ = PosZSlider.value;
+	}
 
 	void Start()
 	{
@@ -128,9 +152,9 @@ public class DesktopOverlayer : MonoBehaviour
 		{
 			//HMD視点位置変換行列に書き込む。
 			//ここでは回転なし、平行移動ありのHUD的な状態にしている。
-			var wx = -0f;
-			var wy = -0f;
-			var wz = -2f;
+			var wx = posX;
+			var wy = posY;
+			var wz = posZ;
 
 			pose.m0 = scale; pose.m1 = 0; pose.m2 = 0; pose.m3 = wx;
 			pose.m4 = 0; pose.m5 = scale * textureYflip; pose.m6 = 0; pose.m7 = wy;
