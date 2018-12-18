@@ -80,6 +80,12 @@ public class DesktopOverlayer : MonoBehaviour
 	[Range(-180f, 180f)]
 	public float rotDisp = 0.0f;
 
+	[Range(-0.05f, 1.0f)]
+	public float alpha = 0.9f;
+
+
+	public RuntimeAnimatorController DisplayAnimator;
+
 	public bool enable;
 	public void DisplayEnable()
 	{
@@ -89,6 +95,7 @@ public class DesktopOverlayer : MonoBehaviour
 			overlay.ShowOverlay(overlayHandle);
 		}
 	}
+
 	public void DisplayDisable()
 	{
 		//オーバーレイを非表示する
@@ -98,9 +105,10 @@ public class DesktopOverlayer : MonoBehaviour
 		}
 	}
 
-	public bool zoom_enable;
-	public void ZoomEnalbe() { zoom_enable = true; }
-	public void ZoomDisable() { zoom_enable = false; }
+	public void ZoomEnalbe() { ZoomScreen.SetActive(true); }
+	public void ZoomDisable() { ZoomScreen.SetActive(false); }
+
+	public GameObject ZoomScreen;
 
 	public Slider ScaleSlider;
 	public Slider PosXSlider;
@@ -109,6 +117,9 @@ public class DesktopOverlayer : MonoBehaviour
 	public Slider RotHSlider;
 	public Slider RotVSlider;
 	public Slider RotDispSlider;
+
+	public Slider AlphaSlider;
+
 
 	HmdMatrix44_t mul(HmdMatrix44_t a, HmdMatrix44_t b)
 	{
@@ -143,7 +154,9 @@ public class DesktopOverlayer : MonoBehaviour
 		RotHSlider.value = 0f;
 		RotVSlider.value = 0f;
 		RotDispSlider.value = 0f;
+		AlphaSlider.value = 0.9f;
 		ChangedSlidersValue();
+		ChangeAlphaSlider();
 	}
 
 	public void ChangedSlidersValue()
@@ -210,6 +223,12 @@ public class DesktopOverlayer : MonoBehaviour
 		pose.m4 = ret.m4; pose.m5 = ret.m5; pose.m6 = ret.m6; pose.m7 = ret.m7;
 		pose.m8 = ret.m8; pose.m9 = ret.m9; pose.m10 = ret.m10; pose.m11 = ret.m11;
 
+	}
+
+	public void ChangeAlphaSlider()
+	{
+		alpha = AlphaSlider.value;
+		overlay.SetOverlayAlpha(overlayHandle, alpha);
 	}
 
 	void Start()
