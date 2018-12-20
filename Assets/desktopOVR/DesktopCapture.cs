@@ -12,31 +12,44 @@ public class DesktopCapture : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		Debug.Log("[DesktopCapture]Start Func.");
+		Debug.Log("[DesktopCapture]Get Render Component.");
 		rend = GetComponent<Renderer>();
 		rend.enabled = true;
-
 		var materials = rend.materials;
+
+		Debug.Log("[DesktopCapture]create a default 2D texture.");
 		texture = new Texture2D(1, 1, TextureFormat.RGBA32, false, false);
 
+		Debug.Log("[DesktopCapture]create new Grabber instance.");
 		grabber = new Grabber(texture.GetNativeTexturePtr());
-		//Debug.Log ("Width: " + grabber.width + " Height: " + grabber.height);
-		IntPtr dest_tex = grabber.texture;
-		//Debug.Log ("Dest tex: " + dest_tex);
+		Debug.Log ("[DesktopCapture]Monitor = Width: " + grabber.width + " Height: " + grabber.height);
 
-		/*
-		while (grabber.GetNextFrame (IntPtr.Zero) != 0)
-			;
-		*/
+		IntPtr dest_tex = grabber.texture;
+		Debug.Log ("[DesktopCapture]destination texture address = " + dest_tex);
+
+		Debug.Log("[DesktopCapture]create external texture.");
 		texture = Texture2D.CreateExternalTexture(grabber.width, grabber.height, TextureFormat.BGRA32, false, false, grabber.texture);
+
+		Debug.Log("[DesktopCapture]Attach the texture to main material's texture.");
 		materials[0].mainTexture = texture;
 		//texture.EncodeToPNG ();
 		//texture.Apply (true);
+
+		Debug.Log("[DesktopCapture]Finish Start Func.");
 	}
 
 	// OnWillRenderObject is called once for each camera if the object is visible.
 	void OnWillRenderObject()
 	{
-		grabber.GetNextFrame(texture.GetNativeTexturePtr());
+		try
+		{
+			grabber.GetNextFrame(texture.GetNativeTexturePtr());
+		}catch(NullReferenceException e)
+		{
+			Debug.LogError(e.Message);
+			Debug.LogError(e.StackTrace);
+		}
 		//Texture2D.CreateExternalTexture (grabber.width, grabber.height, TextureFormat.BGRA32, 0, true, nativeTex);
 		//texture.UpdateExternalTexture(grabber.texture);
 		//texture.Apply ();

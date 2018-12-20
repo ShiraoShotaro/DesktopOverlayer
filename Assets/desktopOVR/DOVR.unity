@@ -278,7 +278,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Note:\n\u3044\u304F\u3064\u304B\u306EUI\u90E8\u54C1\u306F\u307E\u3060\u6B63\u5E38\u306B\u4F5C\u52D5\u3057\u307E\u305B\u3093\u3002\n\ngithub
     repository :\n https://github.com/ShiraoShotaro/DesktopOverlayer\n\ndiscord :
-    [LB]white"
+    [LB]white#4192"
 --- !u!222 &42489485
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7036,6 +7036,46 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1803094650}
+--- !u!1 &1812346724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1812346726}
+  - component: {fileID: 1812346725}
+  m_Layer: 0
+  m_Name: DevelopmentBuildWarning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1812346725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1812346724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871928501fe96d94f97e06beafd9124f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1812346726
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1812346724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1836098790
 GameObject:
   m_ObjectHideFlags: 0
